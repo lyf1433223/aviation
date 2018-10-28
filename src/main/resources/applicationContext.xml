@@ -11,7 +11,8 @@
 
     <mvc:annotation-driven></mvc:annotation-driven>
 
-    <mvc:resources mapping="*" location="js"></mvc:resources>
+    <!--加载静态资源-->
+    <!--<mvc:resources mapping="*" location="js"></mvc:resources>-->
 
     <!--自动扫描cn.lyf1433223包下所有注解-->
     <context:component-scan base-package="cn.lyf1433223"></context:component-scan>
@@ -57,8 +58,6 @@
     <!--redis配置-->
     <bean id="jedisPool" class="redis.clients.jedis.JedisPool">
         <constructor-arg name="host" value="192.168.43.178"></constructor-arg>
-        <!--<constructor-arg name="host" value="180.76.108.162"></constructor-arg>-->
-        <!--<constructor-arg name="port" value="6379"></constructor-arg>-->
     </bean>
 
 
