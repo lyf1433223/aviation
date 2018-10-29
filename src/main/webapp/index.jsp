@@ -80,7 +80,7 @@
 				var cname = $(this).attr("title");
                 $("#iframe").attr("src",cid).ready();
 				$("#Bcrumbs").attr("href",cid).ready();
-				$(".Current_page a").attr('href',cid).ready();	
+				$(".Current_page a").attr('href',cid).ready();
                 $(".Current_page").attr('name',cid);
 				$(".Current_page").html(cname).css({"color":"#333333","cursor":"default"}).ready();
 				$("#parentIframe").html('<span class="parentIframe iframeurl"> </span>').css("display","none").ready();

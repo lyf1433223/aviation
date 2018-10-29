@@ -22,14 +22,16 @@
     <context:component-scan base-package="cn.lyf1433223"></context:component-scan>
 
     <!--加载db.properties文件-->
-    <context:property-placeholder location="classpath:redis.properties"></context:property-placeholder>
+    <context:property-placeholder location="classpath:db.properties"></context:property-placeholder>
 
     <!--配置数据源-->
     <bean id="datasource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
-        <property name="driverClass" value="com.mysql.jdbc.Driver"></property>
-        <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/db_Mybatis"></property>
-        <property name="user" value="root"></property>
-        <property name="password" value="root"></property>
+        <property name="driverClass" value="${driver}"></property>
+        <property name="jdbcUrl" value="${url}"></property>
+        <property name="user" value="${username}"></property>
+        <property name="password" value="${password}"></property>
+        <property name="maxPoolSize" value="${maxpoolSize}"></property>
+        <property name="initialPoolSize" value="${initialpoolSize}"></property>
     </bean>
 
     <!--配置sqlsessionfactory-->
