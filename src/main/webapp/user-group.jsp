@@ -83,9 +83,9 @@
          <td class="td-status"><span class="label label-success radius">正常</span></td>
           <td class="td-manage">
           <a onClick="member_stop(this,'10001')"  href="javascript:;" title="停用"  class="btn btn-xs btn-success"><i class="icon-ok bigger-120"></i></a>
-           <a title="用户组详情" href="user-group-list.jsp" class="btn btn-xs btn-info Refund_detailed">用户组详情</a>        
+           <a title="用户组详情" href="user-group-list.jsp" class="btn btn-xs btn-info Refund_detailed">用户组详情</a>
            <a title="修改权限" href="javascript:;"  onclick="member_edit('550')" class="btn btn-xs btn-warning">修改权限</a>
-           
+
           </td>
         </tr>
         </tbody>
@@ -323,7 +323,7 @@ function member_edit(id){
 function member_stop(obj,id){
 	layer.confirm('确认要停用吗？',function(index){
 		$(obj).parents("tr").find(".td-manage").prepend('<a style="text-decoration:none" class="btn btn-xs " onClick="member_start(this,id)" href="javascript:;" title="启用"><i class="icon-ok  bigger-120"></i></a>');
-		$(obj).parents("tr").find(".td-status").jsp('<span class="label label-defaunt radius">已停用</span>');
+		$(obj).parents("tr").find(".td-status").html('<span class="label label-defaunt radius">已停用</span>');
 		$(obj).remove();
 		layer.msg('已停用!',{icon: 5,time:1000});
 	});
@@ -334,7 +334,7 @@ function member_stop(obj,id){
 function member_start(obj,id){
 	layer.confirm('确认要启用吗？',function(index){
 		$(obj).parents("tr").find(".td-manage").prepend('<a style="text-decoration:none" class="btn btn-xs btn-success" onClick="member_stop(this,id)" href="javascript:;" title="停用"><i class="icon-ok bigger-120"></i></a>');
-		$(obj).parents("tr").find(".td-status").jsp('<span class="label label-success radius">已启用</span>');
+		$(obj).parents("tr").find(".td-status").html('<span class="label label-success radius">已启用</span>');
 		$(obj).remove();
 		layer.msg('已启用!',{icon: 6,time:1000});
 	});

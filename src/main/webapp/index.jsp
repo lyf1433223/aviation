@@ -82,9 +82,9 @@
 				$("#Bcrumbs").attr("href",cid).ready();
 				$(".Current_page a").attr('href',cid).ready();	
                 $(".Current_page").attr('name',cid);
-				$(".Current_page").jsp(cname).css({"color":"#333333","cursor":"default"}).ready();	
-				$("#parentIframe").jsp('<span class="parentIframe iframeurl"> </span>').css("display","none").ready();	
-				$("#parentIfour").jsp(''). css("display","none").ready();		
+				$(".Current_page").html(cname).css({"color":"#333333","cursor":"default"}).ready();
+				$("#parentIframe").html('<span class="parentIframe iframeurl"> </span>').css("display","none").ready();
+				$("#parentIfour").html(''). css("display","none").ready();
       });
 	 
     
@@ -115,7 +115,7 @@ $( document).ready(function(){
     return str; 
 } 
 
-setInterval(function(){$('#time').jsp(currentTime)},1000);  
+setInterval(function(){$('#time').html(currentTime)},1000);
   $('#Exit_system').on('click', function(){
       layer.confirm('是否确定退出系统？', {
      btn: ['是','否'] ,//按钮
@@ -134,9 +134,9 @@ function link_operating(name,title){
 				$("#Bcrumbs").attr("href",cid).ready();
 				$(".Current_page a").attr('href',cid).ready();	
                 $(".Current_page").attr('name',cid);
-				$(".Current_page").jsp(cname).css({"color":"#333333","cursor":"default"}).ready();	
-				$("#parentIframe").jsp('<span class="parentIframe iframeurl"> </span>').css("display","none").ready();	
-				$("#parentIfour").jsp(''). css("display","none").ready();		
+				$(".Current_page").html(cname).css({"color":"#333333","cursor":"default"}).ready();
+				$("#parentIframe").html('<span class="parentIframe iframeurl"> </span>').css("display","none").ready();
+				$("#parentIfour").html(''). css("display","none").ready();
       
     
 }
