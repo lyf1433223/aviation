@@ -9,8 +9,5 @@
         <module name="aviation" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="aviation" target="1.7" />
-    </bytecodeTargetLevel>
   </component>
 </project>

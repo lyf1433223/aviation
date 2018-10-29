@@ -12,11 +12,7 @@
     <mvc:annotation-driven></mvc:annotation-driven>
 
     <!--加载静态资源-->
-    <mvc:resources mapping="*" location="js"></mvc:resources>
-    <mvc:resources mapping="*" location="font"></mvc:resources>
-    <mvc:resources mapping="*" location="images"></mvc:resources>
-    <mvc:resources mapping="*" location="assets"></mvc:resources>
-    <mvc:resources mapping="*" location="css"></mvc:resources>
+    <mvc:default-servlet-handler></mvc:default-servlet-handler>
 
     <!--自动扫描cn.lyf1433223包下所有注解-->
     <context:component-scan base-package="cn.lyf1433223"></context:component-scan>
@@ -30,8 +26,8 @@
         <property name="jdbcUrl" value="${url}"></property>
         <property name="user" value="${username}"></property>
         <property name="password" value="${password}"></property>
-        <property name="maxPoolSize" value="${maxpoolSize}"></property>
         <property name="initialPoolSize" value="${initialpoolSize}"></property>
+        <property name="maxPoolSize" value="${maxpoolSize}"></property>
     </bean>
 
     <!--配置sqlsessionfactory-->
