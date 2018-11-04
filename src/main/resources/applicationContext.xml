@@ -22,12 +22,12 @@
 
     <!--配置数据源-->
     <bean id="datasource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
-        <property name="driverClass" value="com.mysql.jdbc.Driver"></property>
-        <property name="jdbcUrl" value="jdbc:mysql://127.0.0.1:3306/db_aviation"></property>
-        <property name="user" value="root"></property>
-        <property name="password" value="root"></property>
-        <property name="initialPoolSize" value="20"></property>
-        <property name="maxPoolSize" value="100"></property>
+        <property name="driverClass" value="${driver}"></property>
+        <property name="jdbcUrl" value="${url}"></property>
+        <property name="user" value="${username}"></property>
+        <property name="password" value="${password}"></property>
+        <property name="initialPoolSize" value="${initialpoolSize}"></property>
+        <property name="maxPoolSize" value="${maxpoolSize}"></property>
     </bean>
 
     <!--配置sqlsessionfactory-->
@@ -36,8 +36,7 @@
         <property name="dataSource" ref="datasource"></property>
         <!--  加载mapper 配置文件
               感觉可以不写，一般我们都是使用注解开发  -->
-        <property name="mapperLocations" value="classpath:mapper/*.xml"></property>
-        <property name="configLocation" value="classpath:mybatisConfig.xml"/>
+        <!--<property name="mapperLocations" value="classpath:mapper/student.xml"></property>-->
     </bean>
 
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
@@ -58,28 +57,9 @@
         <property name="maxInMemorySize" value="40960"></property>
     </bean>
 
-    <!--&lt;!&ndash;redis配置&ndash;&gt;-->
-    <!--<bean id="jedisPool" class="redis.clients.jedis.JedisPool">-->
-        <!--<constructor-arg name="host" value="192.168.43.178"></constructor-arg>-->
-        <!--<constructor-arg name="port" value="6379"></constructor-arg>-->
-    <!--</bean>-->
-
-    <!--&lt;!&ndash;配置RedisCache类对象&ndash;&gt;-->
-    <!--<bean id="redisCache" class="cn.lyf1433223.redis.RedisCache">-->
-        <!--<property name="jedisPool" ref="jedisPool"></property>-->
-    <!--</bean>-->
-
-
     <!--redis配置-->
     <bean id="jedisPool" class="redis.clients.jedis.JedisPool">
-        <!--<constructor-arg name="host" value="192.168.153.134"></constructor-arg>-->
-        <constructor-arg name="host" value="193.112.211.146"></constructor-arg>
-        <constructor-arg name="port" value="6379"></constructor-arg>
-    </bean>
-
-    <!--配置RedisCache类对象-->
-    <bean id="redisCache" class="cn.lyf1433223.redis.RedisCache">
-        <property name="jedisPool" ref="jedisPool"></property>
+        <constructor-arg name="host" value="192.168.43.178"></constructor-arg>
     </bean>
 
 

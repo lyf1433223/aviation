@@ -5,7 +5,7 @@ package cn.lyf1433223.pojo.aviation;
  * @ClassName:f_statel_basic_data 
  * @Description: TODO(��˵����f_statel_basic_data )
  * @author Uncle liu 
- * @date 2018-10-28 16:21:11
+ * @date 2018-11-02 11:51:13
  */ 
 
 public class F_statel_basic_data{

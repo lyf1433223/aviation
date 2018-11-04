@@ -1,117 +1,78 @@
 package cn.lyf1433223.pojo.aviation;
 
-import java.io.Serializable;
 
-public class F_turntable_basic_data implements Serializable{
-    private Integer id;
+/**
+ * @ClassName:f_turntable_basic_data 
+ * @Description: TODO(��˵����f_turntable_basic_data )
+ * @author Uncle liu 
+ * @date 2018-10-28 16:21:11
+ */ 
 
-    private String xl_zpbm;
-
-    private String xl_zpsx;
-
-    private Integer xl_zpzt;
-
-    private String lb_bm_ss;
-
-    private String xl_hjl;
-
-    private String xl_tpxs;
-
-    private String remark;
-
-    public F_turntable_basic_data() {
-    }
-
-    public F_turntable_basic_data(Integer id) {
-        this.id = id;
-    }
-
-    public F_turntable_basic_data(Integer id, String xl_zpbm, String xl_zpsx, Integer xl_zpzt, String lb_bm_ss, String xl_hjl, String xl_tpxs, String remark) {
-        this.id = id;
-        this.xl_zpbm = xl_zpbm;
-        this.xl_zpsx = xl_zpsx;
-        this.xl_zpzt = xl_zpzt;
-        this.lb_bm_ss = lb_bm_ss;
-        this.xl_hjl = xl_hjl;
-        this.xl_tpxs = xl_tpxs;
-        this.remark = remark;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getXl_zpbm() {
-        return xl_zpbm;
-    }
-
-    public void setXl_zpbm(String xl_zpbm) {
-        this.xl_zpbm = xl_zpbm;
-    }
-
-    public String getXl_zpsx() {
-        return xl_zpsx;
-    }
-
-    public void setXl_zpsx(String xl_zpsx) {
-        this.xl_zpsx = xl_zpsx;
-    }
-
-    public Integer getXl_zpzt() {
-        return xl_zpzt;
-    }
-
-    public void setXl_zpzt(Integer xl_zpzt) {
-        this.xl_zpzt = xl_zpzt;
-    }
-
-    public String getLb_bm_ss() {
-        return lb_bm_ss;
-    }
-
-    public void setLb_bm_ss(String lb_bm_ss) {
-        this.lb_bm_ss = lb_bm_ss;
-    }
-
-    public String getXl_hjl() {
-        return xl_hjl;
-    }
-
-    public void setXl_hjl(String xl_hjl) {
-        this.xl_hjl = xl_hjl;
-    }
-
-    public String getXl_tpxs() {
-        return xl_tpxs;
-    }
-
-    public void setXl_tpxs(String xl_tpxs) {
-        this.xl_tpxs = xl_tpxs;
-    }
-
-    public String getRemark() {
-        return remark;
-    }
-
-    public void setRemark(String remark) {
-        this.remark = remark;
-    }
-
-    @Override
-    public String toString() {
-        return "F_turntable_basic_data{" +
-                "id=" + id +
-                ", xl_zpbm='" + xl_zpbm + '\'' +
-                ", xl_zpsx='" + xl_zpsx + '\'' +
-                ", xl_zpzt=" + xl_zpzt +
-                ", lb_bm_ss='" + lb_bm_ss + '\'' +
-                ", xl_hjl='" + xl_hjl + '\'' +
-                ", xl_tpxs='" + xl_tpxs + '\'' +
-                ", remark='" + remark + '\'' +
-                '}';
-    }
+public class F_turntable_basic_data{
+	private Integer id;
+	private String code;
+	private Integer states;
+	private String attribute;
+	private String company;
+	private String number;
+	private String terminal;
+	public F_turntable_basic_data(){
+	}
+	public F_turntable_basic_data(Integer id,String code,Integer states,String attribute,String company,String number,String terminal){
+		this.id=id;
+		this.code=code;
+		this.states=states;
+		this.attribute=attribute;
+		this.company=company;
+		this.number=number;
+		this.terminal=terminal;
+	}
+	public void setId(Integer id){
+		this.id=id;
+	}
+	public Integer getId(){
+		return id;
+	}
+	public void setCode(String code){
+		this.code=code;
+	}
+	public String getCode(){
+		return code;
+	}
+	public void setStates(Integer states){
+		this.states=states;
+	}
+	public Integer getStates(){
+		return states;
+	}
+	public void setAttribute(String attribute){
+		this.attribute=attribute;
+	}
+	public String getAttribute(){
+		return attribute;
+	}
+	public void setCompany(String company){
+		this.company=company;
+	}
+	public String getCompany(){
+		return company;
+	}
+	public void setNumber(String number){
+		this.number=number;
+	}
+	public String getNumber(){
+		return number;
+	}
+	public void setTerminal(String terminal){
+		this.terminal=terminal;
+	}
+	public String getTerminal(){
+		return terminal;
+	}
+	public String toString() { 
+		return "F_turntable_basic_data[id=" + id + ",code=" + code + ",states=" + states + ","+
+		"attribute=" + attribute + ",company=" + company + ",number=" + number + ","+
+		"terminal=" + terminal + "]";
+	}
 }
+

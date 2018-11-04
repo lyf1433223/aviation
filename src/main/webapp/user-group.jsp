@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -30,7 +31,7 @@
 <body>
 <div class="margin clearfix">
  <div class="Shops_Audit"> 
-  <div class="border clearfix"> <span class="l_f"> <a href="javascript:" id="member_add" class="btn btn-warning"><i class="icon-plus"></i>添加用户</a> </span> <span class="r_f">共：<b>2345</b>条</span> </div>
+  <div class="border clearfix"> <span class="l_f"> <a href="javascript:" id="member_add" class="btn btn-warning"><i class="icon-plus"></i>添加用户组</a> </span> <span class="r_f">共：<b></b>条</span> </div>
    <!--申请列表-->
    <div class="audit_list">
      <table class="table table-striped table-bordered table-hover" id="sample-table">
@@ -45,49 +46,33 @@
             <th  >操作</th>
 			</tr>
 		</thead>
-        <tbody>
+        <tbody id="tbody">
+         <c:forEach items="${sessionScope.roles}" var="role">
         <tr>
          <td><label>
                           <input type="checkbox" class="ace">
                           <span class="lbl"></span></label></td>
-         <td>001</td>
-         <td>普通用户</td> 
-         <td class="td-status"><span class="label label-success radius">正常</span></td>
-          <td class="td-manage">
-          <a onClick="member_stop(this,'10001')"  href="javascript:;" title="停用"  class="btn btn-xs btn-success"><i class="icon-ok bigger-120"></i></a>
-           <a title="用户组详情" href="user-group-list.jsp" class="btn btn-xs btn-info Refund_detailed">用户组详情</a>        
-           <a title="修改权限" href="javascript:;"  onclick="member_edit('550')" class="btn btn-xs btn-warning">修改权限</a>
-           
-          </td>
-        </tr>
-         <tr>
-         <td><label>
-                          <input type="checkbox" class="ace">
-                          <span class="lbl"></span></label></td>
-         <td>002</td>
-         <td>管理员</td> 
-         <td class="td-status"><span class="label label-success radius">正常</span></td>
-          <td class="td-manage">
-          <a onClick="member_stop(this,'10001')"  href="javascript:;" title="停用"  class="btn btn-xs btn-success"><i class="icon-ok bigger-120"></i></a>
-           <a title="用户组详情" href="user-group-list.jsp" class="btn btn-xs btn-info Refund_detailed">用户组详情</a>        
-           <a title="修改权限" href="javascript:;"  onclick="member_edit('550')" class="btn btn-xs btn-warning">修改权限</a>
-           
-          </td>
-        </tr>
-         <tr>
-         <td><label>
-                          <input type="checkbox" class="ace">
-                          <span class="lbl"></span></label></td>
-         <td>003</td>
-         <td>超级管理员</td> 
-         <td class="td-status"><span class="label label-success radius">正常</span></td>
-          <td class="td-manage">
-          <a onClick="member_stop(this,'10001')"  href="javascript:;" title="停用"  class="btn btn-xs btn-success"><i class="icon-ok bigger-120"></i></a>
-           <a title="用户组详情" href="user-group-list.jsp" class="btn btn-xs btn-info Refund_detailed">用户组详情</a>
-           <a title="修改权限" href="javascript:;"  onclick="member_edit('550')" class="btn btn-xs btn-warning">修改权限</a>
+         <td>${role.id}</td>
+         <td>${role.name}</td>
+            <c:if test="${role.state==1}">
+                <td class="td-status"><span class="label label-success radius">正常</span></td>
+                <td class="td-manage">
+                    <a onClick="member_stop(this,${role.id},${role.state})"  href="javascript:;" title="停用"  class="btn btn-xs btn-success"><i class="icon-ok bigger-120"></i></a>
+                    <a title="用户组详情" href="SelectAdmin?role_id=${role.id}" class="btn btn-xs btn-info Refund_detailed">用户组详情</a>
+                    <a title="修改权限" href="javascript:;"  onclick="member_edit('550')" class="btn btn-xs btn-warning">修改权限</a>
+                </td>
+            </c:if>
+            <c:if test="${role.state==0}">
+                <td class="td-status"><span class="label label-defaunt radius">已停用</span></td>
+                <td class="td-manage">
+                    <a onClick="member_start(this,${role.id},${role.state})"  href="javascript:;" title="启用"  class="btn btn-xs"><i class="icon-ok bigger-120"></i></a>
+                    <a title="用户组详情" href="SelectAdmin?role_id=${role.id}" class="btn btn-xs btn-info Refund_detailed">用户组详情</a>
+                    <a title="修改权限" href="javascript:;"  onclick="member_edit('550')" class="btn btn-xs btn-warning">修改权限</a>
+                </td>
+            </c:if>
 
-          </td>
         </tr>
+         </c:forEach>
         </tbody>
         </table>
    
@@ -100,21 +85,21 @@
 <form class="add_menber" id="add_menber_style" style="display:none">
 <ul class=" page-content">
           <li>
-    <label class="label_name" style="width:100px !important">用户组编号：</label>
+    <label class="label_name" style="width:100px !important">用户组名称：</label>
     <span class="add_name">
-            <input value="" name="用户组编号" type="text"  class="text_add"/>
+            <input name="name" content="用户组名称" type="text"  class="text_add"/>
             </span>
     <div class="prompt r_f"></div>
   </li>
          
           <li>
-    <label class="label_name"  style="width:100px !important"> 用户组名称：</label>
+    <label class="label_name"  style="width:100px !important"> 用户组备注：</label>
     <span class="add_name">
-            <input name="用户组名称" type="text"  class="text_add"/>
+            <input name="Remark" type="text" content="用户组备注" class="text_add"/>
             </span>
     <div class="prompt r_f"></div>
-  </li>  
-        </ul>
+  </li>
+</ul>
 </form>
 
 <!--修改权限图层-->
@@ -154,11 +139,11 @@
 		 </dd>
 		</dl>
 		</dd>
-	    </dl> 
+	    </dl>
       
-	   
+
         </dd>
-	    </dl> 
+	    </dl>
         <!--交易管理--> 
         <dl class="permission-list">
 		<dt><label class="middle"><input name="user-Character-0" class="ace" type="checkbox" id="id-disable-check"><span class="lbl">数据管理</span></label></dt>
@@ -214,11 +199,16 @@
 		</dl>  
         </dd>
 		</dl> 
-      </form>
+      </div>
+ </div>
+</form>
 </div>
 </body>
 </html>
 <script>
+
+    var trs = $("#tbody").find("tr");
+    $(".r_f").find("b").html(trs.length);
 
 /*按钮选择*/
 $(function(){
@@ -283,22 +273,21 @@ function member_edit(id){
 }
 /*用户组-添加*/
  $('#member_add').on('click', function(){
+     document.getElementById("add_menber_style").reset();
     layer.open({
         type: 1,
         title: '添加用户组',
 		maxmin: true, 
 		shadeClose: true, //点击遮罩关闭层
-        area : ['800px' , '300px'],
+        area : ['800px' , ''],
         content:$('#add_menber_style'),
 		btn:['提交','取消'],
 		yes:function(index,layero){	
 		 var num=0;
 		 var str="";
      $(".add_menber input[type$='text']").each(function(n){
-          if($(this).val()=="")
-          {
-               
-			   layer.alert(str+=""+$(this).attr("name")+"不能为空！\r\n",{
+          if($(this).val()=="") {
+			   layer.alert(str+=""+$(this).attr("content")+"不能为空！\r\n",{
                 title: '提示框',				
 				icon:0,								
           }); 
@@ -308,7 +297,39 @@ function member_edit(id){
 		 });
 		  if(num>0){  return false;}	 	
           else{
-			  $('#add_menber_style').submit();
+              var from = $('#add_menber_style').serialize();
+              $.ajax({
+                  type:"post",
+                  url:"AddRole",
+                  data:from,
+                  dataType:"json",
+                  success:function (data) {
+                     var tbody = $("#tbody");
+                     var html = " <tr>\n" +
+                         "         <td><label>\n" +
+                         "                          <input type=\"checkbox\" class=\"ace\">\n" +
+                         "                          <span class=\"lbl\"></span></label></td>\n" +
+                         "         <td>"+data.id+"</td>\n" +
+                         "         <td>"+data.name+"</td>\n";
+                     if(data.state==1){
+                         html+="<td class=\"td-status\"><span class=\"label label-success radius\">正常</span></td>\n" +
+                             "                <td class=\"td-manage\">\n" +
+                             "                    <a onClick=\"member_stop(this,"+data.id+","+data.state+")\"  href=\"javascript:;\" title=\"停用\"  class=\"btn btn-xs btn-success\"><i class=\"icon-ok bigger-120\"></i></a>\n" +
+                             "                    <a title=\"用户组详情\" href=\"SelectAdmin?role_id="+data.id+"\" class=\"btn btn-xs btn-info Refund_detailed\">用户组详情</a>\n" +
+                             "                    <a title=\"修改权限\" href=\"javascript:;\"  onclick=\"member_edit('550')\" class=\"btn btn-xs btn-warning\">修改权限</a>\n" +
+                             "                </td><tr>";
+                     }else{
+                         html+="<td class=\"td-status\"><span class=\"label label-defaunt radius\">已停用</span></td>\n" +
+                             "                <td class=\"td-manage\">\n" +
+                             "                    <a onClick=\"member_start(this,"+data.id+","+data.state+")\"  href=\"javascript:;\" title=\"启用\"  class=\"btn btn-xs\"><i class=\"icon-ok bigger-120\"></i></a>\n" +
+                             "                    <a title=\"用户组详情\" href=\"SelectAdmin?role_id="+data.id+"\" class=\"btn btn-xs btn-info Refund_detailed\">用户组详情</a>\n" +
+                             "                    <a title=\"修改权限\" href=\"javascript:;\"  onclick=\"member_edit('550')\" class=\"btn btn-xs btn-warning\">修改权限</a>\n" +
+                             "                </td><tr>";
+                     }
+                      tbody.append(html);
+
+                  }
+              })
 			  layer.alert('添加成功！',{
                title: '提示框',				
 			icon:1,		
@@ -320,23 +341,44 @@ function member_edit(id){
 });
    
 /*用户组-停用*/
-function member_stop(obj,id){
+function member_stop(obj,id,state){
 	layer.confirm('确认要停用吗？',function(index){
-		$(obj).parents("tr").find(".td-manage").prepend('<a style="text-decoration:none" class="btn btn-xs " onClick="member_start(this,id)" href="javascript:;" title="启用"><i class="icon-ok  bigger-120"></i></a>');
-		$(obj).parents("tr").find(".td-status").html('<span class="label label-defaunt radius">已停用</span>');
-		$(obj).remove();
-		layer.msg('已停用!',{icon: 5,time:1000});
+        var sessionRoleid = "${sessionScope.Admin.adminRole.id}"
+        if(sessionRoleid==id){
+            layer.msg('对不起,此用户组为您所在用户组,无法被禁用!', {icon:2, time: 1500});
+        }else {
+            $.ajax({
+                url: "UsersStartAndStop",
+                type: "post",
+                data: {"id": id, "state": state},
+                dataType: "json",
+                success: function (data) {
+                    $(obj).parents("tr").find(".td-manage").prepend('<a style="text-decoration:none" class="btn btn-xs " onClick="member_start(this,' + id + ',' + data.state + ')" href="javascript:;" title="启用"><i class="icon-ok  bigger-120"></i></a>');
+                    $(obj).parents("tr").find(".td-status").html('<span class="label label-defaunt radius">已停用</span>');
+                    $(obj).remove();
+                    layer.msg('已停用!', {icon: 5, time: 1000});
+                }
+            })
+        }
 	});
 	
 }
 
 /*用户组-启用*/
-function member_start(obj,id){
+function member_start(obj,id,state){
 	layer.confirm('确认要启用吗？',function(index){
-		$(obj).parents("tr").find(".td-manage").prepend('<a style="text-decoration:none" class="btn btn-xs btn-success" onClick="member_stop(this,id)" href="javascript:;" title="停用"><i class="icon-ok bigger-120"></i></a>');
-		$(obj).parents("tr").find(".td-status").html('<span class="label label-success radius">已启用</span>');
-		$(obj).remove();
-		layer.msg('已启用!',{icon: 6,time:1000});
+        $.ajax({
+            url: "UsersStartAndStop",
+            type: "post",
+            data: {"id": id, "state": state},
+            dataType: "json",
+            success: function (data) {
+                $(obj).parents("tr").find(".td-manage").prepend('<a style="text-decoration:none" class="btn btn-xs btn-success" onClick="member_stop(this,'+id+','+data.state+')" href="javascript:;" title="停用"><i class="icon-ok bigger-120"></i></a>');
+                $(obj).parents("tr").find(".td-status").html('<span class="label label-success radius">已启用</span>');
+                $(obj).remove();
+                layer.msg('已启用!', {icon: 6, time: 1000});
+            }
+        })
 	});
 } 
 </script>
