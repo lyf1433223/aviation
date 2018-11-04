@@ -1,53 +1,81 @@
 package cn.lyf1433223.pojo.aviation;
 
+import java.io.Serializable;
 
-/**
- * @ClassName:f_reason_basic_data 
- * @Description: TODO(��˵����f_reason_basic_data )
- * @author Uncle liu 
- * @date 2018-10-28 16:21:11
- */ 
+public class F_reason_basic_data implements Serializable{
+    private Integer id;
 
-public class F_reason_basic_data{
-	private Integer id;
-	private String code;
-	private String name;
-	private String en_name;
-	public F_reason_basic_data(){
-	}
-	public F_reason_basic_data(Integer id,String code,String name,String en_name){
-		this.id=id;
-		this.code=code;
-		this.name=name;
-		this.en_name=en_name;
-	}
-	public void setId(Integer id){
-		this.id=id;
-	}
-	public Integer getId(){
-		return id;
-	}
-	public void setCode(String code){
-		this.code=code;
-	}
-	public String getCode(){
-		return code;
-	}
-	public void setName(String name){
-		this.name=name;
-	}
-	public String getName(){
-		return name;
-	}
-	public void setEn_name(String en_name){
-		this.en_name=en_name;
-	}
-	public String getEn_name(){
-		return en_name;
-	}
-	public String toString() { 
-		return "F_reason_basic_data[id=" + id + ",code=" + code + ",name=" + name + ","+
-		"en_name=" + en_name + "]";
-	}
+    private String code;
+
+    private String zwms;
+
+    private String ywms;
+
+    private String remark;
+
+    public F_reason_basic_data() {
+    }
+
+    public F_reason_basic_data(Integer id) {
+        this.id = id;
+    }
+
+    public F_reason_basic_data(Integer id, String code, String zwms, String ywms, String remark) {
+        this.id = id;
+        this.code = code;
+        this.zwms = zwms;
+        this.ywms = ywms;
+        this.remark = remark;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public String getZwms() {
+        return zwms;
+    }
+
+    public void setZwms(String zwms) {
+        this.zwms = zwms;
+    }
+
+    public String getYwms() {
+        return ywms;
+    }
+
+    public void setYwms(String ywms) {
+        this.ywms = ywms;
+    }
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
+    }
+
+    @Override
+    public String toString() {
+        return "F_reason_basic_data{" +
+                "id=" + id +
+                ", code='" + code + '\'' +
+                ", zwms='" + zwms + '\'' +
+                ", ywms='" + ywms + '\'' +
+                ", remark='" + remark + '\'' +
+                '}';
+    }
 }
-

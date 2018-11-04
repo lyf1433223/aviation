@@ -137,8 +137,6 @@ function link_operating(name,title){
 				$(".Current_page").html(cname).css({"color":"#333333","cursor":"default"}).ready();
 				$("#parentIframe").html('<span class="parentIframe iframeurl"> </span>').css("display","none").ready();
 				$("#parentIfour").html(''). css("display","none").ready();
-      
-    
 }
 </script>	
 	</head>
@@ -208,7 +206,6 @@ function link_operating(name,title){
 				     <ul class="submenu">
 						<li class="home"><a href="javascript:void(0)" name="Automatic-collection.jsp" title="自动采集" class="iframeurl"><i class="icon-double-angle-right"></i>自动采集</a></li>
 						 <li class="home"><a href="javascript:void(0)" name="BD-maintenance.jsp" title="基础数据维护" class="iframeurl"><i class="icon-double-angle-right"></i>基础数据维护</a></li>
-						  
 							</ul>
 						</li>
                   <li>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.lyf1433223.dao.IMaintenanceDao">
+
+  <delete id="Del">
+     delete from ${table} where id=#{id}
+  </delete>
+
+
+  <insert id="Add" >
+          insert into ${table}
+      <foreach collection="list.data.keys" item="i" open="(" separator="," close=")">
+          <if test="list.data[i] != null">
+              ${i}
+          </if>
+      </foreach>
+          values
+      <foreach collection="list.data.values" item="i" open="(" separator="," close=")">
+            #{i}
+      </foreach>
+  </insert>
+
+    <!--<select id="Select">-->
+        <!--SELECT * FROM ${table}-->
+    <!--</select>-->
+
+
+</mapper>

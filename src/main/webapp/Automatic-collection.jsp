@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html> 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -36,30 +37,7 @@
               <th width="140">操作</th>
             </tr>
           </thead>
-          <tbody>
- <tr>
-              <td><label>
-                  <input type="checkbox" class="ace">
-                  <span class="lbl"></span></label></td>
-              <td>001</td>
-              <td>机场信息系统集成API</td>
-              <td>www.jichanginfo.com</td>
-              <td>2016-6-11 11:11</td>
-              <td class="td-status"><span class="label label-success radius">自动</span></td>
-              <td class="td-manage"><a onClick="member_stop(this,'10001')"  href="javascript:;" title="停用"  class="btn btn-xs btn-success"><i class="icon-ok bigger-120"></i></a> <a title="删除" href="javascript:;"  onclick="member_del(this,'1')" class="btn btn-xs btn-warning" ><i class="icon-trash  bigger-120"></i></a></td>
-            </tr>
-            <tr>
-              <td><label>
-                  <input type="checkbox" class="ace">
-                  <span class="lbl"></span></label></td>
-              <td>002</td>
-              <td>安检系统</td>
-              <td>www.anjian.com</td>
-              <td>2017-2-11 17:23</td>
-              <td class="td-status"><span class="label label-success radius">自动</span></td>
-              <td class="td-manage"><a onClick="member_stop(this,'10001')"  href="javascript:;" title="停用"  class="btn btn-xs btn-success"><i class="icon-ok bigger-120"></i></a> <a title="删除" href="javascript:;"  onclick="member_del(this,'1')" class="btn btn-xs btn-warning" ><i class="icon-trash  bigger-120"></i></a></td>
-            </tr>
-          </tbody>
+          <tbody id="tab"></tbody>
         </table>
         <div style=" float:right; margin-right:20px;">
           <nav aria-label="Page navigation">
@@ -81,33 +59,98 @@
  
 </body>
 </html>
-<script> 
-/*-删除*/
-function member_del(obj,id){
-	layer.confirm('确认要删除吗？',function(index){
-		$(obj).parents("tr").remove();
-		layer.msg('已删除!',{icon:1,time:1000});
-	});
-}
- 
+<script>
+    window.onload =function(){
+        $.ajax({
+            type:"post",
+            url:"/getAllConnection",
+            success : function(data){
+                var a = $.parseJSON(data);
+                var html="";  //声明一个字符串，作拼接
+                for(var i = 0 ; i <a.length ; i++){
+                    html+="<tr>";
+                    html+="<td><label><input type=\"checkbox\" class=\"ace\"><span class=\"lbl\"></span></label></td>";
+                    html+="<td>"+a[i].id+"</td>";
+                    html+="<td>"+a[i].name+"</td>";
+                    html+="<td>"+a[i].url+"</td>";
+                    html+="<td>"+a[i].edittime+"</td>";
+                    if(a[i].state == 0){
+                        html+="<td class=\"td-status\"><span class=\"label label-defaunt radius\">已停用</span></td>";
+                        html+="<td class=\"td-manage\">" +
+                            "<a style=\"text-decoration:none\" class=\"btn btn-xs\" onClick=\"member_start(this," + a[i].id + ")\" href=\"javascript:;\" title=\"启用\"><i class=\"icon-ok bigger-120\"></i></a>" +
+                            "<a onclick=\"member_del(this ,"+a[i].id+")\"  href=\"javascript:;\" title=\"删除\" class=\"btn btn-xs btn-warning\" ><i class=\"icon-trash  bigger-120\"></i></a></td>";
+                        html+="</tr>";
+                    }else if(a[i].state == 1) {
+                        html += "<td class=\"td-status\"><span class=\"label label-success radius\" id=\"state\">自动</span></td>";
+                        html += "<td class=\"td-manage\">" +
+                            "<a onClick=\"member_stop(this , " + a[i].id + ")\"  href=\"javascript:;\" title=\"停用\"  class=\"btn btn-xs btn-success\"><i class=\"icon-ok bigger-120\"></i></a> " +
+                            "<a onclick=\"member_del(this ," + a[i].id + ")\"  href=\"javascript:;\" title=\"删除\" class=\"btn btn-xs btn-warning\" ><i class=\"icon-trash  bigger-120\"></i></a></td>";
+                        html += "</tr>";
+                    }
+                }
+                $('#tab').html(html);
+            }
+        });
+    }
 
 /*-停用*/
 function member_stop(obj,id){
-	layer.confirm('确认要停用吗？',function(index){
-		$(obj).parents("tr").find(".td-manage").prepend('<a style="text-decoration:none" class="btn btn-xs " onClick="member_start(this,id)" href="javascript:;" title="启用"><i class="icon-ok bigger-120"></i></a>');
-		$(obj).parents("tr").find(".td-status").html('<span class="label label-defaunt radius">已停用</span>');
-		$(obj).remove();
-		layer.msg('已停用!',{icon: 5,time:1000});
+    layer.confirm('确认要停用吗？',function(index){
+        $.ajax({
+            type:"post",
+            url:"/stopCollection",
+            data:{
+                id:id
+            },
+            success : function(data){
+                if(data > 0){
+                    $(obj).parents("tr").find(".td-manage").prepend('<a style="text-decoration:none" class="btn btn-xs " onClick="member_start(this,'+id+')" href="javascript:;" title="启用"><i class="icon-ok bigger-120"></i></a>');
+                    $(obj).parents("tr").find(".td-status").html('<span class="label label-defaunt radius">已停用</span>');
+                    $(obj).remove();
+                    layer.msg('已停用!',{icon: 5,time:1000});
+                }
+            }
+        });
+    });
+}
+
+/*-删除*/
+function member_del(obj,id){
+	layer.confirm('确认要删除吗？',function(index){
+        $.ajax({
+            type:"post",
+            url:"/delCollection",
+            data:{
+                id:id
+            },
+            success : function(data){
+                if(data > 0){
+                    $(obj).parents("tr").remove();
+                    layer.msg('已删除!',{icon:1,time:1000});
+                }
+            }
+        });
 	});
 }
 
 /*-启用*/
 function member_start(obj,id){
 	layer.confirm('确认要启用吗？',function(index){
-		$(obj).parents("tr").find(".td-manage").prepend('<a style="text-decoration:none" class="btn btn-xs btn-success" onClick="member_stop(this,id)" href="javascript:;" title="停用"><i class="icon-ok bigger-120"></i></a>');
-		$(obj).parents("tr").find(".td-status").html('<span class="label label-success radius">自动</span>');
-		$(obj).remove();
-		layer.msg('已启用!',{icon: 6,time:1000});
+        $.ajax({
+            type:"post",
+            url:"/startCollection",
+            data:{
+                id:id
+            },
+            success : function(data){
+                if(data > 0){
+                    $(obj).parents("tr").find(".td-manage").prepend('<a style="text-decoration:none" class="btn btn-xs btn-success" onClick="member_stop(this,'+id+')" href="javascript:;" title="停用"><i class="icon-ok bigger-120"></i></a>');
+                    $(obj).parents("tr").find(".td-status").html('<span class="label label-success radius">自动</span>');
+                    $(obj).remove();
+                    layer.msg('已启用!',{icon: 6,time:1000});
+                }
+            }
+        });
 	});
 }
 </script>

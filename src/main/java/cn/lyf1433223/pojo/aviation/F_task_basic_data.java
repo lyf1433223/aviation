@@ -1,78 +1,106 @@
 package cn.lyf1433223.pojo.aviation;
 
+import java.io.Serializable;
 
-/**
- * @ClassName:f_task_basic_data 
- * @Description: TODO(��˵����f_task_basic_data )
- * @author Uncle liu 
- * @date 2018-10-28 16:21:11
- */ 
+public class F_task_basic_data implements Serializable{
+    private Integer id;
 
-public class F_task_basic_data{
-	private Integer id;
-	private String code;
-	private String synopsis;
-	private String name;
-	private String en_name;
-	private String task_code;
-	private Integer rank;
-	public F_task_basic_data(){
-	}
-	public F_task_basic_data(Integer id,String code,String synopsis,String name,String en_name,String task_code,Integer rank){
-		this.id=id;
-		this.code=code;
-		this.synopsis=synopsis;
-		this.name=name;
-		this.en_name=en_name;
-		this.task_code=task_code;
-		this.rank=rank;
-	}
-	public void setId(Integer id){
-		this.id=id;
-	}
-	public Integer getId(){
-		return id;
-	}
-	public void setCode(String code){
-		this.code=code;
-	}
-	public String getCode(){
-		return code;
-	}
-	public void setSynopsis(String synopsis){
-		this.synopsis=synopsis;
-	}
-	public String getSynopsis(){
-		return synopsis;
-	}
-	public void setName(String name){
-		this.name=name;
-	}
-	public String getName(){
-		return name;
-	}
-	public void setEn_name(String en_name){
-		this.en_name=en_name;
-	}
-	public String getEn_name(){
-		return en_name;
-	}
-	public void setTask_code(String task_code){
-		this.task_code=task_code;
-	}
-	public String getTask_code(){
-		return task_code;
-	}
-	public void setRank(Integer rank){
-		this.rank=rank;
-	}
-	public Integer getRank(){
-		return rank;
-	}
-	public String toString() { 
-		return "F_task_basic_data[id=" + id + ",code=" + code + ",synopsis=" + synopsis + ","+
-		"name=" + name + ",en_name=" + en_name + ",task_code=" + task_code + ","+
-		"rank=" + rank + "]";
-	}
+    private String task_code;
+
+    private String task_zh_short;
+
+    private String task_sort;
+
+    private String task_zh;
+
+    private String task_en;
+
+    private String remark;
+
+    public F_task_basic_data() {
+    }
+
+    public F_task_basic_data(Integer id) {
+        this.id = id;
+    }
+
+
+    public F_task_basic_data(Integer id, String task_code, String task_zh_short, String task_sort, String task_zh, String task_en, String remark) {
+        this.id = id;
+        this.task_code = task_code;
+        this.task_zh_short = task_zh_short;
+        this.task_sort = task_sort;
+        this.task_zh = task_zh;
+        this.task_en = task_en;
+        this.remark = remark;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getTask_code() {
+        return task_code;
+    }
+
+    public void setTask_code(String task_code) {
+        this.task_code = task_code;
+    }
+
+    public String getTask_zh_short() {
+        return task_zh_short;
+    }
+
+    public void setTask_zh_short(String task_zh_short) {
+        this.task_zh_short = task_zh_short;
+    }
+
+    public String getTask_sort() {
+        return task_sort;
+    }
+
+    public void setTask_sort(String task_sort) {
+        this.task_sort = task_sort;
+    }
+
+    public String getTask_zh() {
+        return task_zh;
+    }
+
+    public void setTask_zh(String task_zh) {
+        this.task_zh = task_zh;
+    }
+
+    public String getTask_en() {
+        return task_en;
+    }
+
+    public void setTask_en(String task_en) {
+        this.task_en = task_en;
+    }
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
+    }
+
+    @Override
+    public String toString() {
+        return "F_task_basic_data{" +
+                "id=" + id +
+                ", task_code='" + task_code + '\'' +
+                ", task_zh_short='" + task_zh_short + '\'' +
+                ", task_sort='" + task_sort + '\'' +
+                ", task_zh='" + task_zh + '\'' +
+                ", task_en='" + task_en + '\'' +
+                ", remark='" + remark + '\'' +
+                '}';
+    }
 }
-

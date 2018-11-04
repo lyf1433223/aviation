@@ -1,161 +1,194 @@
 package cn.lyf1433223.pojo.aviation;
 
+import java.util.Date;
 
-/**
- * @ClassName:f_aircraft_basic_data 
- * @Description: TODO(��˵����f_aircraft_basic_data )
- * @author Uncle liu 
- * @date 2018-10-28 16:21:11
- */ 
+public class F_aircraft_basic_data {
+    private Integer id;
 
-public class F_aircraft_basic_data{
-	private Integer id;
-	private String code;
-	private String no;
-	private String model;
-	private String company;
-	private String attribute;
-	private String two_code;
-	private Double wingspan;
-	private Double length;
-	private Double height;
-	private Integer max_seat;
-	private Double cargo;
-	private Double takeoff_weight;
-	private Double max_range;
-	private Double max_fuel;
-	private String runway;
-	private String aircraft_type;
-	public F_aircraft_basic_data(){
-	}
-	public F_aircraft_basic_data(Integer id,String code,String no,String model,String company,String attribute,String two_code,Double wingspan,Double length,Double height,Integer max_seat,Double cargo,Double takeoff_weight,Double max_range,Double max_fuel,String runway,String aircraft_type){
-		this.id=id;
-		this.code=code;
-		this.no=no;
-		this.model=model;
-		this.company=company;
-		this.attribute=attribute;
-		this.two_code=two_code;
-		this.wingspan=wingspan;
-		this.length=length;
-		this.height=height;
-		this.max_seat=max_seat;
-		this.cargo=cargo;
-		this.takeoff_weight=takeoff_weight;
-		this.max_range=max_range;
-		this.max_fuel=max_fuel;
-		this.runway=runway;
-		this.aircraft_type=aircraft_type;
-	}
-	public void setId(Integer id){
-		this.id=id;
-	}
-	public Integer getId(){
-		return id;
-	}
-	public void setCode(String code){
-		this.code=code;
-	}
-	public String getCode(){
-		return code;
-	}
-	public void setNo(String no){
-		this.no=no;
-	}
-	public String getNo(){
-		return no;
-	}
-	public void setModel(String model){
-		this.model=model;
-	}
-	public String getModel(){
-		return model;
-	}
-	public void setCompany(String company){
-		this.company=company;
-	}
-	public String getCompany(){
-		return company;
-	}
-	public void setAttribute(String attribute){
-		this.attribute=attribute;
-	}
-	public String getAttribute(){
-		return attribute;
-	}
-	public void setTwo_code(String two_code){
-		this.two_code=two_code;
-	}
-	public String getTwo_code(){
-		return two_code;
-	}
-	public void setWingspan(Double wingspan){
-		this.wingspan=wingspan;
-	}
-	public Double getWingspan(){
-		return wingspan;
-	}
-	public void setLength(Double length){
-		this.length=length;
-	}
-	public Double getLength(){
-		return length;
-	}
-	public void setHeight(Double height){
-		this.height=height;
-	}
-	public Double getHeight(){
-		return height;
-	}
-	public void setMax_seat(Integer max_seat){
-		this.max_seat=max_seat;
-	}
-	public Integer getMax_seat(){
-		return max_seat;
-	}
-	public void setCargo(Double cargo){
-		this.cargo=cargo;
-	}
-	public Double getCargo(){
-		return cargo;
-	}
-	public void setTakeoff_weight(Double takeoff_weight){
-		this.takeoff_weight=takeoff_weight;
-	}
-	public Double getTakeoff_weight(){
-		return takeoff_weight;
-	}
-	public void setMax_range(Double max_range){
-		this.max_range=max_range;
-	}
-	public Double getMax_range(){
-		return max_range;
-	}
-	public void setMax_fuel(Double max_fuel){
-		this.max_fuel=max_fuel;
-	}
-	public Double getMax_fuel(){
-		return max_fuel;
-	}
-	public void setRunway(String runway){
-		this.runway=runway;
-	}
-	public String getRunway(){
-		return runway;
-	}
-	public void setAircraft_type(String aircraft_type){
-		this.aircraft_type=aircraft_type;
-	}
-	public String getAircraft_type(){
-		return aircraft_type;
-	}
-	public String toString() { 
-		return "F_aircraft_basic_data[id=" + id + ",code=" + code + ",no=" + no + ","+
-		"model=" + model + ",company=" + company + ",attribute=" + attribute + ","+
-		"two_code=" + two_code + ",wingspan=" + wingspan + ",length=" + length + ","+
-		"height=" + height + ",max_seat=" + max_seat + ",cargo=" + cargo + ","+
-		"takeoff_weight=" + takeoff_weight + ",max_range=" + max_range + ",max_fuel=" + max_fuel + ","+
-		"runway=" + runway + ",aircraft_type=" + aircraft_type + "]";
-	}
+    private String flt_Reg;
+
+    private String flt_Type;
+
+    private String mtow;
+
+    private String payload;
+
+    private String max_Seats;
+
+    private String wide_Body;
+
+    private String flt_Types;
+
+    private String aln_Iata;
+
+    private String aln_Icao;
+
+    private String aln_Internal;
+
+    private String aln_Internal_Chn;
+
+    private String start_Date;
+
+    private String end_Date;
+
+    private String change_Flag;
+
+    private String remark;
+
+    public F_aircraft_basic_data() {
+    }
+
+    public F_aircraft_basic_data(Integer id) {
+        this.id = id;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getFlt_Reg() {
+        return flt_Reg;
+    }
+
+    public void setFlt_Reg(String flt_Reg) {
+        this.flt_Reg = flt_Reg;
+    }
+
+    public String getFlt_Type() {
+        return flt_Type;
+    }
+
+    public void setFlt_Type(String flt_Type) {
+        this.flt_Type = flt_Type;
+    }
+
+    public String getMtow() {
+        return mtow;
+    }
+
+    public void setMtow(String mtow) {
+        this.mtow = mtow;
+    }
+
+    public String getPayload() {
+        return payload;
+    }
+
+    public void setPayload(String payload) {
+        this.payload = payload;
+    }
+
+    public String getMax_Seats() {
+        return max_Seats;
+    }
+
+    public void setMax_Seats(String max_Seats) {
+        this.max_Seats = max_Seats;
+    }
+
+    public String getWide_Body() {
+        return wide_Body;
+    }
+
+    public void setWide_Body(String wide_Body) {
+        this.wide_Body = wide_Body;
+    }
+
+    public String getFlt_Types() {
+        return flt_Types;
+    }
+
+    public void setFlt_Types(String flt_Types) {
+        this.flt_Types = flt_Types;
+    }
+
+    public String getAln_Iata() {
+        return aln_Iata;
+    }
+
+    public void setAln_Iata(String aln_Iata) {
+        this.aln_Iata = aln_Iata;
+    }
+
+    public String getAln_Icao() {
+        return aln_Icao;
+    }
+
+    public void setAln_Icao(String aln_Icao) {
+        this.aln_Icao = aln_Icao;
+    }
+
+    public String getAln_Internal() {
+        return aln_Internal;
+    }
+
+    public void setAln_Internal(String aln_Internal) {
+        this.aln_Internal = aln_Internal;
+    }
+
+    public String getAln_Internal_Chn() {
+        return aln_Internal_Chn;
+    }
+
+    public void setAln_Internal_Chn(String aln_Internal_Chn) {
+        this.aln_Internal_Chn = aln_Internal_Chn;
+    }
+
+    public String getStart_Date() {
+        return start_Date;
+    }
+
+    public void setStart_Date(String start_Date) {
+        this.start_Date = start_Date;
+    }
+
+    public String getEnd_Date() {
+        return end_Date;
+    }
+
+    public void setEnd_Date(String end_Date) {
+        this.end_Date = end_Date;
+    }
+
+    public String getChange_Flag() {
+        return change_Flag;
+    }
+
+    public void setChange_Flag(String change_Flag) {
+        this.change_Flag = change_Flag;
+    }
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
+    }
+
+    @Override
+    public String toString() {
+        return "F_aircraft_basic_data{" +
+                "id=" + id +
+                ", flt_Reg='" + flt_Reg + '\'' +
+                ", flt_Type='" + flt_Type + '\'' +
+                ", mtow='" + mtow + '\'' +
+                ", payload='" + payload + '\'' +
+                ", max_Seats='" + max_Seats + '\'' +
+                ", wide_Body='" + wide_Body + '\'' +
+                ", flt_Types='" + flt_Types + '\'' +
+                ", aln_Iata='" + aln_Iata + '\'' +
+                ", aln_Icao='" + aln_Icao + '\'' +
+                ", aln_Internal='" + aln_Internal + '\'' +
+                ", aln_Internal_Chn='" + aln_Internal_Chn + '\'' +
+                ", start_Date='" + start_Date + '\'' +
+                ", end_Date='" + end_Date + '\'' +
+                ", change_Flag='" + change_Flag + '\'' +
+                ", remark='" + remark + '\'' +
+                '}';
+    }
 }
-
