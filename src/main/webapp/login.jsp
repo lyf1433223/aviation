@@ -39,29 +39,56 @@
     </style>
 </head>
 <body>
+
     <div class="dowebok">
         <br/><br/><br/><br/>
         <h1 align="center">航班统计系统</h1>
         <br/><br/><br/><br/>
+    <form action="userLogin" name="login" method="post">
         <div class="form-item">
-            <input id="username" type="text" autocomplete="off" placeholder="账号">
-            <p class="tip">请输入账号</p>
+            <input name="username" type="text" autocomplete="off" placeholder="账号">
+            <p class="tip" name="uname">请输入账号</p>
         </div>
         <div class="form-item">
-            <input id="password" type="password" autocomplete="off" placeholder="登录密码">
-            <p class="tip">账号或密码不正确</p>
+            <input name="password" type="password" autocomplete="off" placeholder="登录密码">
+            <p class="tip" name="upwd">请输入密码</p>
         </div>
+    </form>
         <div class="form-item"><button id="submit">登 录</button></div>
 
     </div>
-    <script src="images/jquery.min.js"></script>
     <script>
-        $(function () {
-            $('input').val('')
             $('#submit').on('click', function () {
-                $('.tip').show()
+                var name = $("[name='username']").val();
+                if(name==""){
+                    $("[name='uname']").show();
+                }else {
+                    $("[name='uname']").hide();
+                }
+                var pwd = $("[name='password']").val();
+                if(pwd==""){
+                    $("[name='upwd']").show();
+                }else {
+                    $("[name='upwd']").hide()
+                }
+
+                if(name!=""&&pwd!==""){
+                    var from = $("[name='login']");
+                    $.ajax({
+                        type:"post",
+                        url:"login",
+                        data:from.serialize(),
+                        success:function(result){
+                           if(result=="null"){
+                               alert("没有此账户！\n请输入正确的账号或者密码！")
+                           }else{
+                               from.submit();
+                           }
+                        }
+                    })
+                }
             })
-        })
+
     </script>
 
 <div style="text-align:center;">

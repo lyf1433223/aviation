@@ -22,12 +22,12 @@
 
     <!--配置数据源-->
     <bean id="datasource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
-        <property name="driverClass" value="${driver}"></property>
-        <property name="jdbcUrl" value="${url}"></property>
-        <property name="user" value="${username}"></property>
-        <property name="password" value="${password}"></property>
-        <property name="initialPoolSize" value="${initialpoolSize}"></property>
-        <property name="maxPoolSize" value="${maxpoolSize}"></property>
+        <property name="driverClass" value="com.mysql.jdbc.Driver"></property>
+        <property name="jdbcUrl" value="jdbc:mysql://127.0.0.1:3306/db_aviation"></property>
+        <property name="user" value="root"></property>
+        <property name="password" value="root"></property>
+        <property name="initialPoolSize" value="20"></property>
+        <property name="maxPoolSize" value="100"></property>
     </bean>
 
     <!--配置sqlsessionfactory-->
@@ -36,7 +36,7 @@
         <property name="dataSource" ref="datasource"></property>
         <!--  加载mapper 配置文件
               感觉可以不写，一般我们都是使用注解开发  -->
-        <!--<property name="mapperLocations" value="classpath:mapper/student.xml"></property>-->
+        <property name="mapperLocations" value="classpath:mapper/*.xml"></property>
     </bean>
 
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">

@@ -11,4 +11,11 @@
 		</dir>
 	</classpath>
 
+	<web>
+		<link target="/">
+			<dir name="E:/GitRepostories/aviation/src/main/webapp">
+			</dir>
+		</link>
+	</web>
+
 </application>

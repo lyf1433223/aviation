@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.lyf1433223.dao.UserDao">
+
+
+    <select id="SelectUserLike" resultMap="selectUser">
+            <if test="post==0">
+                select * from F_admin where 1=1
+            </if>
+            <if test="post!=0">
+                select * from F_admin where post=#{post}
+            </if>
+             <if test='admin.username!=""'>
+                 and username like '%${admin.username}%'
+             </if>
+             <if test='admin.name!=""'>
+                 and name like '%${admin.name}%'
+             </if>
+             <if test='admin.tel!=""'>
+                 and tel like '%${admin.tel}%'
+             </if>
+    </select>
+    <resultMap id="selectUser" type="cn.lyf1433223.pojo.aviation.F_admin">
+        <id property="id" column="id"></id>
+        <association property="dept" column="post" select="selectDept"></association>
+        <association property="adminRole" column="role_id" select="selectRole"></association>
+    </resultMap>
+    <select id="selectDept" resultType="cn.lyf1433223.pojo.aviation.Dept">
+        select * from dept_info where id = #{post}
+    </select>
+    <select id="selectRole" resultType="cn.lyf1433223.pojo.aviation.F_admin_role">
+        select * from F_admin_role where id = #{role_id}
+    </select>
+
+    <select id="SelectUserandRoleLike" resultMap="selectUser">
+        <if test="post==0">
+            select * from F_admin where role_id=#{role_id}
+        </if>
+        <if test="post!=0">
+            select * from F_admin where post=#{post} and role_id=#{role_id}
+        </if>
+        <if test='admin.username!=""'>
+            and username like '%${admin.username}%'
+        </if>
+        <if test='admin.name!=""'>
+            and name like '%${admin.name}%'
+        </if>
+        <if test='admin.tel!=""'>
+            and tel like '%${admin.tel}%'
+        </if>
+    </select>
+
+
+
+</mapper>
